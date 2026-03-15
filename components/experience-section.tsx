@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const experiences = [
   {
@@ -38,28 +38,27 @@ const experiences = [
 ];
 
 function useScrollReveal(threshold = 0.15) {
-  const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const [node, setNode] = useState<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    if (!node) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
-          observer.unobserve(el);
+          observer.unobserve(node);
         }
       },
       { threshold }
     );
 
-    observer.observe(el);
+    observer.observe(node);
     return () => observer.disconnect();
-  }, [threshold]);
+  }, [node, threshold]);
 
-  return { ref, visible };
+  return [setNode, visible] as const;
 }
 
 function ExperienceContent({
@@ -87,7 +86,7 @@ function ExperienceContent({
         {experience.technologies.map((tech) => (
           <span
             key={tech}
-            className="text-[0.65rem] font-medium uppercase tracking-[0.1em] text-foreground/30 border border-foreground/[0.08] rounded-full px-3 py-1"
+            className="text-[0.65rem] font-medium uppercase tracking-widest text-foreground/30 border border-foreground/8 rounded-full px-3 py-1"
           >
             {tech}
           </span>
@@ -106,15 +105,15 @@ function TimelineEntry({
   index: number;
   isLast: boolean;
 }) {
-  const entry = useScrollReveal(0.2);
+  const [entryRef, entryVisible] = useScrollReveal(0.2);
   const isEven = index % 2 === 0;
 
   return (
-    <div ref={entry.ref} className="relative grid grid-cols-[1fr] md:grid-cols-[1fr_40px_1fr] gap-0">
+    <div ref={entryRef} className="relative grid grid-cols-[1fr] md:grid-cols-[1fr_40px_1fr] gap-0">
       {/* Left column */}
       <div
         className={`hidden md:block pb-20 pr-8 transition-all duration-700 ease-out ${
-          entry.visible
+          entryVisible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-6"
         }`}
@@ -135,7 +134,7 @@ function TimelineEntry({
       <div className="hidden md:flex flex-col items-center">
         <div
           className={`relative z-10 mt-[6px] transition-all duration-500 ease-out ${
-            entry.visible ? "scale-100" : "scale-0"
+            entryVisible ? "scale-100" : "scale-0"
           }`}
           style={{ transitionDelay: `${100 + index * 80}ms` }}
         >
@@ -144,8 +143,8 @@ function TimelineEntry({
         {!isLast && (
           <div
             className={`w-px flex-1 origin-top transition-all duration-1000 ease-out ${
-              entry.visible
-                ? "scale-y-100 bg-foreground/[0.08]"
+              entryVisible
+                ? "scale-y-100 bg-foreground/8"
                 : "scale-y-0 bg-transparent"
             }`}
             style={{ transitionDelay: `${200 + index * 80}ms` }}
@@ -156,7 +155,7 @@ function TimelineEntry({
       {/* Right column */}
       <div
         className={`hidden md:block pb-20 pl-8 transition-all duration-700 ease-out ${
-          entry.visible
+          entryVisible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-6"
         }`}
@@ -176,7 +175,7 @@ function TimelineEntry({
       {/* Mobile layout — stacked */}
       <div
         className={`md:hidden pb-14 transition-all duration-700 ease-out ${
-          entry.visible
+          entryVisible
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-6"
         }`}
@@ -192,16 +191,16 @@ function TimelineEntry({
 }
 
 export function ExperienceSection() {
-  const heading = useScrollReveal(0.2);
+  const [headingRef, headingVisible] = useScrollReveal(0.2);
 
   return (
     <section id="experience" className="relative pt-16 sm:pt-24 pb-16 sm:pb-20 px-6">
       <div className="mx-auto max-w-5xl">
         {/* Section label + heading — centered */}
-        <div ref={heading.ref} className="mb-20 sm:mb-28 text-center">
+        <div ref={headingRef} className="mb-20 sm:mb-28 text-center">
           <div
             className={`flex items-center justify-center gap-3 mb-6 transition-all duration-700 ease-out ${
-              heading.visible
+              headingVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-4"
             }`}
@@ -215,7 +214,7 @@ export function ExperienceSection() {
 
           <h2
             className={`font-serif text-[clamp(2.2rem,6vw,4.5rem)] italic leading-[1.05] tracking-tight text-foreground transition-all duration-700 ease-out ${
-              heading.visible
+              headingVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
             }`}
