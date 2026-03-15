@@ -11,7 +11,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden px-6">
+    <section className="relative flex flex-col min-h-0 sm:min-h-[calc(100vh-4rem)] items-center justify-start pt-24 pb-16 sm:justify-center sm:pt-0 sm:pb-0 overflow-hidden px-6">
 
       {/* Center content */}
       <div className="relative flex flex-col items-center text-center max-w-4xl">
@@ -123,7 +123,7 @@ export function HeroSection() {
 
       {/* Bottom scroll indicator */}
       <div
-        className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 transition-all duration-700 ease-out ${
+        className={`sm:absolute sm:bottom-8 sm:left-1/2 sm:-translate-x-1/2 mt-16 sm:mt-0 flex flex-col items-center gap-3 transition-all duration-700 ease-out ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}
         style={{ transitionDelay: "1300ms" }}

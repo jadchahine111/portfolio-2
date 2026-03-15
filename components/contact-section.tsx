@@ -330,7 +330,7 @@ export function ContactSection() {
                   onFocus={() => setFocusedField("message")}
                   onBlur={() => setFocusedField(null)}
                   placeholder="Tell me about your project..."
-                  className="w-full bg-transparent border-0 border-b border-foreground/[0.08] pb-3 text-[0.95rem] text-foreground/80 placeholder:text-foreground/15 outline-none transition-all duration-300 focus:border-foreground/25 resize-none"
+                  className="block w-full bg-transparent border-0 border-b border-foreground/[0.08] pb-3 text-[0.95rem] text-foreground/80 placeholder:text-foreground/15 outline-none transition-all duration-300 focus:border-foreground/25 resize-none"
                 />
                 <div
                   className={`absolute bottom-0 left-0 h-px bg-foreground/40 transition-all duration-500 ease-out ${

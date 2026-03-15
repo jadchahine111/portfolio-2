@@ -186,7 +186,7 @@ export function SummariesCTA() {
               >
                 <a
                   href="#"
-                  className="group relative inline-flex h-12 items-center justify-center gap-3 overflow-hidden rounded-full bg-foreground px-8 text-background text-[0.8rem] font-medium uppercase tracking-[0.15em] transition-all hover:shadow-lg hover:shadow-foreground/10"
+                  className="group relative inline-flex h-12 w-full sm:w-auto items-center justify-center gap-3 overflow-hidden rounded-full bg-foreground px-8 text-background text-[0.8rem] font-medium uppercase tracking-[0.15em] transition-all hover:shadow-lg hover:shadow-foreground/10"
                 >
                   <span className="relative z-10">Browse Summaries</span>
                   <svg

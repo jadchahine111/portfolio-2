@@ -51,9 +51,9 @@ export function Footer() {
         <div className="h-px w-full bg-foreground/[0.08]" />
 
         {/* Main footer content */}
-        <div className="grid grid-cols-1 gap-12 pt-14 sm:grid-cols-12 sm:gap-8 lg:pt-16">
+        <div className="grid grid-cols-2 gap-10 pt-14 sm:grid-cols-12 sm:gap-8 lg:pt-16">
           {/* Column 1 — Logo + tagline */}
-          <div className="sm:col-span-4 lg:col-span-5">
+          <div className="col-span-2 sm:col-span-5 lg:col-span-5">
             <Link
               href="/"
               className="group inline-flex items-baseline gap-1.5"
@@ -72,7 +72,7 @@ export function Footer() {
           </div>
 
           {/* Column 2 — Navigation */}
-          <div className="sm:col-span-3 lg:col-span-2">
+          <div className="col-span-1 sm:col-span-2 lg:col-span-2">
             <span className="mb-5 block text-[0.65rem] font-medium uppercase tracking-[0.25em] text-foreground/25">
               Navigation
             </span>
@@ -91,7 +91,7 @@ export function Footer() {
           </div>
 
           {/* Column 3 — Resources */}
-          <div className="sm:col-span-2 lg:col-span-2">
+          <div className="col-span-1 sm:col-span-2 lg:col-span-2">
             <span className="mb-5 block text-[0.65rem] font-medium uppercase tracking-[0.25em] text-foreground/25">
               Resources
             </span>
@@ -107,7 +107,7 @@ export function Footer() {
           </div>
 
           {/* Column 4 — Connect */}
-          <div className="sm:col-span-5 lg:col-span-3">
+          <div className="col-span-2 sm:col-span-3 lg:col-span-3">
             <span className="mb-5 block text-[0.65rem] font-medium uppercase tracking-[0.25em] text-foreground/25">
               Connect
             </span>
@@ -150,7 +150,7 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-foreground/[0.06] pt-6 sm:flex-row sm:items-center lg:mt-20">
+        <div className="mt-16 flex flex-col items-center text-center justify-between gap-4 border-t border-foreground/[0.06] pt-6 sm:flex-row sm:items-center sm:text-left lg:mt-20">
           <span className="text-[0.65rem] tracking-wide text-foreground/20">
             &copy; 2026 Jad Chahine. All rights reserved.
           </span>

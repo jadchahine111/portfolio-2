@@ -219,8 +219,8 @@ export function AboutSection() {
           </div>
         </div>
 
-        {/* Closing statement */}
-        <div ref={closing.ref} className="mt-28 sm:mt-36 max-w-2xl mx-auto text-center">
+        {/* Closing statement — commented out for now */}
+        {/* <div ref={closing.ref} className="mt-28 sm:mt-36 max-w-2xl mx-auto text-center">
           <p
             className={`font-serif text-[clamp(1.4rem,3.5vw,2rem)] italic leading-[1.45] tracking-tight text-foreground/70 transition-all duration-700 ease-out ${
               closing.visible
@@ -245,7 +245,7 @@ export function AboutSection() {
             </span>
             <div className="h-px w-5 bg-foreground/20" />
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
