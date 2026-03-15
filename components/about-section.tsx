@@ -155,7 +155,7 @@ export function AboutSection() {
             {stats.map((stat, i) => (
               <div
                 key={stat.label}
-                className={`transition-all duration-700 ease-out ${
+                className={`text-center sm:text-left transition-all duration-700 ease-out ${
                   statsBlock.visible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-6"

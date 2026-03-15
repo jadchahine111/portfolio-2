@@ -41,6 +41,47 @@ export function Header() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
+  const [activeSection, setActiveSection] = useState("");
+
+  useEffect(() => {
+    const sectionIds = navItems.map((item) => item.href.replace("#", ""));
+    const observers: IntersectionObserver[] = [];
+
+    // Observe hero section to clear active state
+    const hero = document.querySelector("section:first-of-type");
+    if (hero) {
+      const heroObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveSection("");
+          }
+        },
+        { rootMargin: "-50% 0px -50% 0px" }
+      );
+      heroObserver.observe(hero);
+      observers.push(heroObserver);
+    }
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveSection(id);
+          }
+        },
+        { rootMargin: "-50% 0px -50% 0px" }
+      );
+
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
   const isDark = resolvedTheme === "dark";
 
   return (
@@ -70,16 +111,25 @@ export function Header() {
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-1">
-              {navItems.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className="relative px-4 py-2 text-[0.8rem] font-medium uppercase tracking-[0.15em] text-foreground/60 transition-colors hover:text-foreground group"
-                >
-                  {item.label}
-                  <span className="absolute bottom-1 left-4 right-4 h-px bg-foreground scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                const isActive = activeSection === item.href.replace("#", "");
+                return (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    className={`relative px-4 py-2 text-[0.8rem] font-medium uppercase tracking-[0.15em] transition-colors hover:text-foreground group ${
+                      isActive ? "text-foreground" : "text-foreground/60"
+                    }`}
+                  >
+                    {item.label}
+                    <span
+                      className={`absolute bottom-1 left-4 right-4 h-px bg-foreground transition-transform origin-left duration-300 ${
+                        isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                      }`}
+                    />
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Right side: theme toggle + mobile hamburger */}
