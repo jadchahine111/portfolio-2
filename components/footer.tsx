@@ -58,7 +58,7 @@ export function Footer() {
               href="/"
               className="group inline-flex items-baseline gap-1.5"
             >
-              <span className="font-serif text-[1.35rem] italic tracking-tight text-foreground transition-opacity group-hover:opacity-70">
+              <span className="font-serif italic text-[1.2rem] tracking-tighter text-foreground transition-opacity group-hover:opacity-70">
                 Jad
               </span>
               <span className="text-[0.8rem] font-medium uppercase tracking-[0.2em] text-foreground/70 transition-opacity group-hover:opacity-70">

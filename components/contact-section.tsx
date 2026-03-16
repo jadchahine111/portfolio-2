@@ -109,7 +109,7 @@ export function ContactSection() {
           </div>
 
           <h2
-            className={`font-serif text-[clamp(2.2rem,6vw,4.5rem)] italic leading-[1.05] tracking-tight text-foreground max-w-3xl transition-all duration-700 ease-out ${
+            className={`font-serif italic text-[clamp(1.9rem,5vw,3.8rem)] leading-[1.2] tracking-tighter text-foreground max-w-3xl transition-all duration-700 ease-out ${
               heading.visible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"

@@ -1,8 +1,10 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useSyncExternalStore } from "react";
 import Link from "next/link";
+
+const emptySubscribe = () => () => {};
 
 const navItems = [
   { label: "About", href: "#about" },
@@ -13,12 +15,10 @@ const navItems = [
 
 export function Header() {
   const { resolvedTheme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(emptySubscribe, () => true, () => false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -101,7 +101,7 @@ export function Header() {
               className="group relative flex items-baseline gap-1.5"
               onClick={() => setMobileOpen(false)}
             >
-              <span className="font-serif text-[1.35rem] italic tracking-tight text-foreground transition-opacity group-hover:opacity-70">
+              <span className="font-serif italic text-[1.2rem] tracking-tighter text-foreground transition-opacity group-hover:opacity-70">
                 Jad
               </span>
               <span className="text-[0.8rem] font-medium uppercase tracking-[0.2em] text-foreground/70 transition-opacity group-hover:opacity-70">
@@ -137,7 +137,7 @@ export function Header() {
               {/* Theme toggle */}
               <button
                 onClick={() => setTheme(isDark ? "light" : "dark")}
-                className="relative flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:bg-foreground/[0.06] cursor-pointer"
+                className="relative flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:bg-foreground/6 cursor-pointer"
                 aria-label="Toggle theme"
               >
                 {mounted ? (
@@ -193,7 +193,7 @@ export function Header() {
               {/* Mobile hamburger */}
               <button
                 onClick={() => setMobileOpen((v) => !v)}
-                className="relative flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:bg-foreground/[0.06] cursor-pointer md:hidden"
+                className="relative flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:bg-foreground/6 cursor-pointer md:hidden"
                 aria-label={mobileOpen ? "Close menu" : "Open menu"}
                 aria-expanded={mobileOpen}
               >
@@ -248,10 +248,10 @@ export function Header() {
                   <span className="text-[0.7rem] font-mono text-foreground/30 tabular-nums">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-serif text-[2.2rem] italic text-foreground/90 transition-colors group-hover:text-foreground tracking-tight">
+                  <span className="font-serif italic text-[1.9rem] text-foreground/90 transition-colors group-hover:text-foreground tracking-tighter">
                     {item.label}
                   </span>
-                  <span className="flex-1 h-px bg-foreground/[0.06] mx-4" />
+                  <span className="flex-1 h-px bg-foreground/6 mx-4" />
                   <svg
                     className="w-4 h-4 text-foreground/20 transition-all group-hover:text-foreground/60 group-hover:translate-x-1"
                     fill="none"
@@ -271,7 +271,7 @@ export function Header() {
 
             {/* Bottom info on mobile */}
             <div
-              className="menu-item-enter absolute bottom-12 left-8 right-8 flex items-center justify-between border-t border-foreground/[0.06] pt-6"
+              className="menu-item-enter absolute bottom-12 left-8 right-8 flex items-center justify-between border-t border-foreground/6 pt-6"
               style={{ animationDelay: `${80 + navItems.length * 60 + 40}ms` }}
             >
               <span className="text-[0.7rem] uppercase tracking-[0.2em] text-foreground/30">

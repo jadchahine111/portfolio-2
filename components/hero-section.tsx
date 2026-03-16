@@ -32,7 +32,7 @@ export function HeroSection() {
         {/* Main headline */}
         <h1>
           <span
-            className={`block font-serif text-[clamp(3rem,9vw,6rem)] italic leading-none tracking-tight text-foreground transition-all duration-700 ease-out ${
+            className={`block font-serif italic text-[clamp(2.5rem,8vw,5rem)] leading-[1.1] tracking-tighter text-foreground transition-all duration-700 ease-out ${
               visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
             style={{ transitionDelay: "350ms" }}
@@ -40,7 +40,7 @@ export function HeroSection() {
             Crafting digital
           </span>
           <span
-            className={`block font-serif text-[clamp(3rem,9vw,6rem)] italic leading-none tracking-tight text-foreground transition-all duration-700 ease-out ${
+            className={`block font-serif italic text-[clamp(2.5rem,8vw,5rem)] leading-[1.1] tracking-tighter text-foreground transition-all duration-700 ease-out ${
               visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
             style={{ transitionDelay: "480ms" }}
@@ -53,7 +53,7 @@ export function HeroSection() {
             }`}
             style={{ transitionDelay: "610ms" }}
           >
-            <span className="font-serif text-[clamp(3rem,9vw,6rem)] italic leading-none tracking-tight text-foreground">
+            <span className="font-serif italic text-[clamp(2.5rem,8vw,5rem)] leading-[1.1] tracking-tighter text-foreground">
               feel{" "}
             </span>
             <span className="relative">

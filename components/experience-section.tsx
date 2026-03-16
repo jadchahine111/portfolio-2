@@ -70,7 +70,7 @@ function ExperienceContent({
 }) {
   return (
     <div className={align === "left" ? "md:text-right" : "md:text-left"}>
-      <h3 className="font-serif text-[1.35rem] sm:text-[1.6rem] italic tracking-tight text-foreground leading-[1.2] mb-1">
+      <h3 className="font-serif italic text-[1.2rem] sm:text-[1.45rem] tracking-tighter text-foreground leading-[1.2] mb-1">
         {experience.role}
       </h3>
 
@@ -213,7 +213,7 @@ export function ExperienceSection() {
           </div>
 
           <h2
-            className={`font-serif text-[clamp(2.2rem,6vw,4.5rem)] italic leading-[1.05] tracking-tight text-foreground transition-all duration-700 ease-out ${
+            className={`font-serif italic text-[clamp(1.9rem,5vw,3.8rem)] leading-[1.2] tracking-tighter text-foreground transition-all duration-700 ease-out ${
               headingVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"

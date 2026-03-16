@@ -225,7 +225,7 @@ export function ProjectsSection() {
 
           <div className="flex items-end justify-between gap-8">
             <h2
-              className={`font-serif text-[clamp(2.2rem,6vw,4.5rem)] italic leading-[1.05] tracking-tight text-foreground max-w-3xl transition-all duration-700 ease-out ${
+              className={`font-serif italic text-[clamp(1.9rem,5vw,3.8rem)] leading-[1.2] tracking-tighter text-foreground max-w-3xl transition-all duration-700 ease-out ${
                 headingVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
@@ -322,7 +322,7 @@ export function ProjectsSection() {
                     <div className="absolute inset-0 bg-linear-to-br from-foreground/2 via-transparent to-foreground/4" />
 
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="font-serif italic text-[clamp(7rem,18vw,12rem)] leading-none text-foreground/4 select-none transition-all duration-700 group-hover:text-foreground/[0.07] group-hover:scale-105">
+                      <span className="font-serif italic text-[clamp(6rem,16vw,10rem)] leading-[1.1] text-foreground/4 select-none transition-all duration-700 group-hover:text-foreground/[0.07] group-hover:scale-105">
                         {num}
                       </span>
                     </div>
@@ -354,7 +354,7 @@ export function ProjectsSection() {
                       <div className="h-px flex-1 bg-foreground/6 group-hover:bg-foreground/12 transition-colors duration-500" />
                     </div>
 
-                    <h3 className="font-serif text-[1.35rem] sm:text-[1.5rem] italic tracking-tight text-foreground leading-[1.15] mb-3">
+                    <h3 className="font-serif italic text-[1.2rem] sm:text-[1.35rem] tracking-tighter text-foreground leading-[1.15] mb-3">
                       {project.title}
                     </h3>
 

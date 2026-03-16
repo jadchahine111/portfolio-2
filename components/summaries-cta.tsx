@@ -150,7 +150,7 @@ export function SummariesCTA() {
               </div>
 
               <h2
-                className={`font-serif text-[clamp(1.8rem,4vw,3rem)] italic leading-[1.1] tracking-tight text-foreground mb-5 transition-all duration-700 ease-out ${
+                className={`font-serif italic text-[clamp(1.5rem,3.5vw,2.5rem)] leading-[1.1] tracking-tighter text-foreground mb-5 transition-all duration-700 ease-out ${
                   content.visible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-8"

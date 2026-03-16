@@ -78,7 +78,7 @@ export function AboutSection() {
           </div>
 
           <h2
-            className={`font-serif text-[clamp(2.2rem,6vw,4.5rem)] italic leading-[1.05] tracking-tight text-foreground max-w-3xl transition-all duration-700 ease-out ${
+            className={`font-serif italic text-[clamp(1.9rem,5vw,3.8rem)] leading-[1.2] tracking-tighter text-foreground max-w-3xl transition-all duration-700 ease-out ${
               headingVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
@@ -160,7 +160,7 @@ export function AboutSection() {
                 }`}
                 style={{ transitionDelay: `${200 + i * 120}ms` }}
               >
-                <span className="block font-serif text-[clamp(2.5rem,5vw,3.5rem)] italic leading-none tracking-tight text-foreground">
+                <span className="block font-serif italic text-[clamp(2.1rem,4.5vw,3rem)] leading-[1.1] tracking-tighter text-foreground">
                   {stat.value}
                 </span>
                 <span className="mt-2 block text-[0.7rem] font-medium uppercase tracking-[0.2em] text-foreground/35">
@@ -206,7 +206,7 @@ export function AboutSection() {
                 <span className="block text-[0.7rem] font-mono text-foreground/20 mb-4">
                   {item.number}
                 </span>
-                <h3 className="font-serif text-[1.35rem] sm:text-[1.5rem] italic tracking-tight text-foreground mb-4 leading-[1.2]">
+                <h3 className="font-serif italic text-[1.2rem] sm:text-[1.35rem] tracking-tighter text-foreground mb-4 leading-[1.2]">
                   {item.title}
                 </h3>
                 <p className="text-[0.9rem] leading-[1.75] text-foreground/40">
@@ -220,7 +220,7 @@ export function AboutSection() {
         {/* Closing statement — commented out for now */}
         {/* <div ref={closing.ref} className="mt-28 sm:mt-36 max-w-2xl mx-auto text-center">
           <p
-            className={`font-serif text-[clamp(1.4rem,3.5vw,2rem)] italic leading-[1.45] tracking-tight text-foreground/70 transition-all duration-700 ease-out ${
+            className={`font-serif italic text-[clamp(1.2rem,3vw,1.75rem)] leading-[1.45] tracking-tighter text-foreground/70 transition-all duration-700 ease-out ${
               closing.visible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-6"
