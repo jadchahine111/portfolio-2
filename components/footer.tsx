@@ -45,10 +45,10 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative px-6 pb-10 pt-0">
+    <footer className="relative px-6 pb-10 pt-16 sm:pt-24">
       <div className="mx-auto max-w-6xl">
         {/* Top divider */}
-        <div className="h-px w-full bg-foreground/8" />
+        <div className="h-px w-full bg-gold/15" />
 
         {/* Main footer content */}
         <div className="grid grid-cols-2 gap-10 pt-14 sm:grid-cols-12 sm:gap-8 lg:pt-16">
@@ -58,7 +58,7 @@ export function Footer() {
               href="/"
               className="group inline-flex items-baseline gap-1.5"
             >
-              <span className="font-serif italic text-[1.2rem] tracking-tighter text-foreground transition-opacity group-hover:opacity-70">
+              <span className="font-serif italic text-[1.2rem] tracking-tighter text-gold-gradient transition-opacity group-hover:opacity-70">
                 Jad
               </span>
               <span className="text-[0.8rem] font-medium uppercase tracking-[0.2em] text-foreground/70 transition-opacity group-hover:opacity-70">
@@ -118,7 +118,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-foreground/8 text-foreground/30 transition-all duration-300 hover:border-foreground/20 hover:text-foreground/60 hover:scale-105"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gold/15 text-foreground/30 transition-all duration-300 hover:border-gold/30 hover:text-gold hover:scale-105"
                   aria-label={social.label}
                 >
                   {social.icon}
@@ -150,7 +150,7 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 flex flex-col items-center text-center justify-between gap-4 border-t border-foreground/6 pt-6 sm:flex-row sm:items-center sm:text-left lg:mt-20">
+        <div className="mt-16 flex flex-col items-center text-center justify-between gap-4 border-t border-gold/10 pt-6 sm:flex-row sm:items-center sm:text-left lg:mt-20">
           <span className="text-[0.65rem] tracking-wide text-foreground/20">
             &copy; 2026 Jad Chahine. All rights reserved.
           </span>

@@ -11,7 +11,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative flex flex-col min-h-0 sm:min-h-[calc(100vh-4rem)] items-center justify-start pt-24 pb-16 sm:justify-center sm:pt-0 sm:pb-0 overflow-hidden px-6">
+    <section className="relative flex flex-col h-svh items-center justify-center overflow-hidden px-6">
 
       {/* Center content */}
       <div className="relative flex flex-col items-center text-center max-w-4xl">
@@ -22,11 +22,11 @@ export function HeroSection() {
           }`}
           style={{ transitionDelay: "200ms" }}
         >
-          <div className="h-px w-6 bg-foreground/25" />
-          <span className="text-[0.65rem] sm:text-[0.7rem] font-medium uppercase tracking-[0.25em] text-foreground/40">
+          <div className="h-px w-6 bg-gold/40" />
+          <span className="text-[0.65rem] sm:text-[0.7rem] font-medium uppercase tracking-[0.25em] text-gold/70">
             Full-Stack Developer
           </span>
-          <div className="h-px w-6 bg-foreground/25" />
+          <div className="h-px w-6 bg-gold/40" />
         </div>
 
         {/* Main headline */}
@@ -57,11 +57,11 @@ export function HeroSection() {
               feel{" "}
             </span>
             <span className="relative">
-              <span className="text-[clamp(3rem,9vw,6rem)] font-light leading-none tracking-tight text-foreground/70">
+              <span className="text-[clamp(3rem,9vw,6rem)] font-light leading-none tracking-tight gold-shimmer">
                 alive
               </span>
               <span
-                className={`absolute -bottom-1 left-0 h-[2px] bg-foreground/20 transition-all duration-1000 ease-out ${
+                className={`absolute -bottom-1 left-0 h-[2px] bg-gradient-to-r from-gold/40 via-gold to-gold/40 transition-all duration-1000 ease-out ${
                   visible ? "w-full" : "w-0"
                 }`}
                 style={{ transitionDelay: "1100ms" }}
@@ -82,17 +82,16 @@ export function HeroSection() {
           using.
         </p>
 
-
         {/* CTA row */}
         <div
-          className={`mt-10 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 transition-all duration-700 ease-out ${
+          className={`mt-10 flex flex-col sm:flex-row items-center gap-6 sm:gap-6 transition-all duration-700 ease-out ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
           style={{ transitionDelay: "980ms" }}
         >
           <a
             href="#work"
-            className="group relative inline-flex h-12 w-full sm:w-auto items-center justify-center gap-3 overflow-hidden rounded-full bg-foreground px-8 text-background text-[0.8rem] font-medium uppercase tracking-[0.15em] transition-all hover:shadow-lg hover:shadow-foreground/10"
+            className="group relative inline-flex h-12 w-full sm:w-auto items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-gold-dark via-gold to-gold-dark px-8 text-background text-[0.8rem] font-medium uppercase tracking-[0.15em] transition-all hover:shadow-lg hover:shadow-gold/20"
           >
             <span className="relative z-10">View Work</span>
             <svg
@@ -108,12 +107,12 @@ export function HeroSection() {
                 d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
               />
             </svg>
-            <span className="absolute inset-0 bg-foreground/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+            <span className="absolute inset-0 bg-gold-dark/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
           </a>
 
           <a
             href="#contact"
-            className="group inline-flex items-center gap-2 text-[0.8rem] font-medium uppercase tracking-[0.15em] text-foreground/50 transition-colors hover:text-foreground"
+            className="group inline-flex items-center gap-2 text-[0.8rem] font-medium uppercase tracking-[0.15em] text-gold/60 transition-colors hover:text-gold"
           >
             Get in touch
             <span className="h-px w-5 bg-current transition-all group-hover:w-8" />
@@ -123,16 +122,16 @@ export function HeroSection() {
 
       {/* Bottom scroll indicator */}
       <div
-        className={`sm:absolute sm:bottom-8 sm:left-1/2 sm:-translate-x-1/2 mt-16 sm:mt-0 flex flex-col items-center gap-3 transition-all duration-700 ease-out ${
+        className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 transition-all duration-700 ease-out ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
         }`}
         style={{ transitionDelay: "1300ms" }}
       >
-        <span className="text-[0.6rem] uppercase tracking-[0.3em] text-foreground/25">
+        <span className="text-[0.6rem] uppercase tracking-[0.3em] text-gold/30">
           Scroll
         </span>
         <div className="relative h-10 w-px overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-foreground/15 animate-[scrollLine_2s_ease-in-out_infinite]" />
+          <div className="absolute top-0 left-0 w-full h-full bg-gold/25 animate-[scrollLine_2s_ease-in-out_infinite]" />
         </div>
       </div>
     </section>

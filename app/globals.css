@@ -3,18 +3,43 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f3ee;
+  --foreground: #2a1f14;
+  --gold: #c9a84c;
+  --gold-light: #e0c872;
+  --gold-dark: #a08030;
+  --marble: #ede8e0;
+  --marble-dark: #d6cfc4;
+  --bronze: #8b6914;
+  --terracotta: #c2703e;
+  --olive: #6b7c3f;
+  --navy: #1a2744;
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  --background: #0c0e17;
+  --foreground: #e8e0d4;
+  --gold: #d4b45c;
+  --gold-light: #e8cc7a;
+  --gold-dark: #b09030;
+  --marble: #161a28;
+  --marble-dark: #0f1220;
+  --bronze: #c49a2c;
+  --terracotta: #d4845a;
+  --olive: #8a9e5c;
+  --navy: #0c0e17;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --color-marble: var(--marble);
+  --color-bronze: var(--bronze);
+  --color-terracotta: var(--terracotta);
+  --color-olive: var(--olive);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-serif: var(--font-libre-baskerville);
@@ -24,6 +49,37 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Gold gradient text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gold shimmer animation */
+@keyframes goldShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--gold-dark) 0%,
+    var(--gold-light) 25%,
+    var(--gold) 50%,
+    var(--gold-light) 75%,
+    var(--gold-dark) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 6s ease-in-out infinite;
 }
 
 /* Header mobile menu animation */
@@ -65,9 +121,9 @@ body {
 }
 
 .project-card-hover:hover {
-  border-color: var(--foreground, #171717);
-  border-color: color-mix(in srgb, var(--foreground) 12%, transparent);
-  box-shadow: 0 8px 40px -12px color-mix(in srgb, var(--foreground) 6%, transparent);
+  border-color: var(--gold);
+  border-color: color-mix(in srgb, var(--gold) 30%, transparent);
+  box-shadow: 0 8px 40px -12px color-mix(in srgb, var(--gold) 10%, transparent);
   transform: translateY(-2px);
 }
 
@@ -89,6 +145,8 @@ body {
     transform: translateX(0);
   }
 }
+
+
 
 /* Hero scroll indicator */
 @keyframes scrollLine {

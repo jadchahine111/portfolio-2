@@ -1,30 +1,29 @@
 "use client";
 
-import { useEffect, useRef, useState, FormEvent } from "react";
+import { useEffect, useState, FormEvent } from "react";
 
 function useScrollReveal(threshold = 0.15) {
-  const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const [node, setNode] = useState<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    if (!node) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
-          observer.unobserve(el);
+          observer.unobserve(node);
         }
       },
       { threshold }
     );
 
-    observer.observe(el);
+    observer.observe(node);
     return () => observer.disconnect();
-  }, [threshold]);
+  }, [node, threshold]);
 
-  return { ref, visible };
+  return [setNode, visible] as const;
 }
 
 const socials = [
@@ -58,9 +57,9 @@ const socials = [
 ];
 
 export function ContactSection() {
-  const heading = useScrollReveal(0.2);
-  const content = useScrollReveal(0.1);
-  const formReveal = useScrollReveal(0.1);
+  const [headingRef, headingVisible] = useScrollReveal(0.2);
+  const [contentRef, contentVisible] = useScrollReveal(0.1);
+  const [formRef, formVisible] = useScrollReveal(0.1);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -86,48 +85,42 @@ export function ContactSection() {
       className="relative pt-16 sm:pt-24 pb-16 sm:pb-20 px-6 overflow-hidden"
     >
       <div className="mx-auto max-w-6xl">
-        {/* Divider */}
-        <div
-          className={`h-px w-full bg-foreground/[0.08] mb-16 sm:mb-24 transition-all duration-1000 ease-out origin-left ${
-            heading.visible ? "scale-x-100" : "scale-x-0"
-          }`}
-        />
 
         {/* Section label + heading */}
-        <div ref={heading.ref} className="mb-20 sm:mb-28">
+        <div ref={headingRef} className="mb-20 sm:mb-28">
           <div
             className={`flex items-center gap-3 mb-6 transition-all duration-700 ease-out ${
-              heading.visible
+              headingVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-4"
             }`}
           >
-            <div className="h-px w-8 bg-foreground/20" />
-            <span className="text-[0.65rem] sm:text-[0.7rem] font-medium uppercase tracking-[0.25em] text-foreground/40">
+            <div className="h-px w-8 bg-gold/30" />
+            <span className="text-[0.65rem] sm:text-[0.7rem] font-medium uppercase tracking-[0.25em] text-gold/60">
               Contact
             </span>
           </div>
 
           <h2
             className={`font-serif italic text-[clamp(1.9rem,5vw,3.8rem)] leading-[1.2] tracking-tighter text-foreground max-w-3xl transition-all duration-700 ease-out ${
-              heading.visible
+              headingVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
             }`}
             style={{ transitionDelay: "150ms" }}
           >
             Let&apos;s build something{" "}
-            <span className="text-foreground/50">together</span>
+            <span className="text-gold/50">together</span>
           </h2>
         </div>
 
         {/* Two-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8">
           {/* Left column — info */}
-          <div ref={content.ref} className="lg:col-span-4">
+          <div ref={contentRef} className="lg:col-span-4">
             <p
               className={`text-[0.95rem] leading-[1.8] text-foreground/45 mb-10 transition-all duration-700 ease-out ${
-                content.visible
+                contentVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-6"
               }`}
@@ -140,7 +133,7 @@ export function ContactSection() {
             {/* Email */}
             <div
               className={`mb-10 transition-all duration-700 ease-out ${
-                content.visible
+                contentVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-6"
               }`}
@@ -173,7 +166,7 @@ export function ContactSection() {
             {/* Socials */}
             <div
               className={`transition-all duration-700 ease-out ${
-                content.visible
+                contentVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-6"
               }`}
@@ -189,7 +182,7 @@ export function ContactSection() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex h-10 w-10 items-center justify-center rounded-full border border-foreground/[0.08] text-foreground/35 transition-all duration-300 hover:border-foreground/20 hover:text-foreground/70 hover:scale-105"
+                    className="group flex h-10 w-10 items-center justify-center rounded-full border border-gold/15 text-foreground/35 transition-all duration-300 hover:border-gold/35 hover:text-gold hover:scale-105"
                     aria-label={social.label}
                   >
                     {social.icon}
@@ -200,8 +193,8 @@ export function ContactSection() {
 
             {/* Availability badge */}
             <div
-              className={`mt-12 inline-flex items-center gap-2.5 rounded-full border border-foreground/[0.06] px-4 py-2 transition-all duration-700 ease-out ${
-                content.visible
+              className={`mt-12 inline-flex items-center gap-2.5 rounded-full border border-gold/15 px-4 py-2 transition-all duration-700 ease-out ${
+                contentVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-6"
               }`}
@@ -218,12 +211,12 @@ export function ContactSection() {
           </div>
 
           {/* Right column — form */}
-          <div ref={formReveal.ref} className="lg:col-span-7 lg:col-start-6">
+          <div ref={formRef} className="lg:col-span-7 lg:col-start-6">
             <form onSubmit={handleSubmit} className="space-y-10">
               {/* Name field */}
               <div
                 className={`relative transition-all duration-700 ease-out ${
-                  formReveal.visible
+                  formVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-6"
                 }`}
@@ -249,10 +242,10 @@ export function ContactSection() {
                   onFocus={() => setFocusedField("name")}
                   onBlur={() => setFocusedField(null)}
                   placeholder="Your name"
-                  className="w-full bg-transparent border-0 border-b border-foreground/[0.08] pb-3 text-[0.95rem] text-foreground/80 placeholder:text-foreground/15 outline-none transition-all duration-300 focus:border-foreground/25"
+                  className="w-full bg-transparent border-0 border-b border-foreground/8 pb-3 text-[0.95rem] text-foreground/80 placeholder:text-foreground/15 outline-none transition-all duration-300 focus:border-foreground/25"
                 />
                 <div
-                  className={`absolute bottom-0 left-0 h-px bg-foreground/40 transition-all duration-500 ease-out ${
+                  className={`absolute bottom-0 left-0 h-px bg-gold/60 transition-all duration-500 ease-out ${
                     focusedField === "name" ? "w-full" : "w-0"
                   }`}
                 />
@@ -261,7 +254,7 @@ export function ContactSection() {
               {/* Email field */}
               <div
                 className={`relative transition-all duration-700 ease-out ${
-                  formReveal.visible
+                  formVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-6"
                 }`}
@@ -288,10 +281,10 @@ export function ContactSection() {
                   onFocus={() => setFocusedField("email")}
                   onBlur={() => setFocusedField(null)}
                   placeholder="your@email.com"
-                  className="w-full bg-transparent border-0 border-b border-foreground/[0.08] pb-3 text-[0.95rem] text-foreground/80 placeholder:text-foreground/15 outline-none transition-all duration-300 focus:border-foreground/25"
+                  className="w-full bg-transparent border-0 border-b border-foreground/8 pb-3 text-[0.95rem] text-foreground/80 placeholder:text-foreground/15 outline-none transition-all duration-300 focus:border-foreground/25"
                 />
                 <div
-                  className={`absolute bottom-0 left-0 h-px bg-foreground/40 transition-all duration-500 ease-out ${
+                  className={`absolute bottom-0 left-0 h-px bg-gold/60 transition-all duration-500 ease-out ${
                     focusedField === "email" ? "w-full" : "w-0"
                   }`}
                 />
@@ -300,7 +293,7 @@ export function ContactSection() {
               {/* Message field */}
               <div
                 className={`relative transition-all duration-700 ease-out ${
-                  formReveal.visible
+                  formVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-6"
                 }`}
@@ -330,10 +323,10 @@ export function ContactSection() {
                   onFocus={() => setFocusedField("message")}
                   onBlur={() => setFocusedField(null)}
                   placeholder="Tell me about your project..."
-                  className="block w-full bg-transparent border-0 border-b border-foreground/[0.08] pb-3 text-[0.95rem] text-foreground/80 placeholder:text-foreground/15 outline-none transition-all duration-300 focus:border-foreground/25 resize-none"
+                  className="block w-full bg-transparent border-0 border-b border-foreground/8 pb-3 text-[0.95rem] text-foreground/80 placeholder:text-foreground/15 outline-none transition-all duration-300 focus:border-foreground/25 resize-none"
                 />
                 <div
-                  className={`absolute bottom-0 left-0 h-px bg-foreground/40 transition-all duration-500 ease-out ${
+                  className={`absolute bottom-0 left-0 h-px bg-gold/60 transition-all duration-500 ease-out ${
                     focusedField === "message" ? "w-full" : "w-0"
                   }`}
                 />
@@ -342,7 +335,7 @@ export function ContactSection() {
               {/* Submit button */}
               <div
                 className={`flex items-center justify-between pt-2 transition-all duration-700 ease-out ${
-                  formReveal.visible
+                  formVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-6"
                 }`}
@@ -351,7 +344,7 @@ export function ContactSection() {
                 <button
                   type="submit"
                   disabled={submitted}
-                  className="group relative inline-flex h-12 items-center justify-center gap-3 overflow-hidden rounded-full bg-foreground px-8 text-background text-[0.8rem] font-medium uppercase tracking-[0.15em] transition-all hover:shadow-lg hover:shadow-foreground/10 disabled:opacity-60 cursor-pointer"
+                  className="group relative inline-flex h-12 items-center justify-center gap-3 overflow-hidden rounded-full bg-linear-to-r from-gold-dark via-gold to-gold-dark px-8 text-background text-[0.8rem] font-medium uppercase tracking-[0.15em] transition-all hover:shadow-lg hover:shadow-gold/20 disabled:opacity-60 cursor-pointer"
                 >
                   <span className="relative z-10">
                     {submitted ? "Message Sent" : "Send Message"}
@@ -385,7 +378,7 @@ export function ContactSection() {
                       />
                     </svg>
                   )}
-                  <span className="absolute inset-0 bg-foreground/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                  <span className="absolute inset-0 bg-gold-dark/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 </button>
 
                 <span className="hidden sm:block text-[0.7rem] text-foreground/20 tracking-wide">

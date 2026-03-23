@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
+
 function useScrollReveal(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -74,10 +75,10 @@ function Marquee({
         {doubled.map((item, i) => (
           <div
             key={`${item.label}-${i}`}
-            className="topic-card group relative flex-shrink-0 flex items-stretch overflow-hidden rounded-[0.5rem] border border-foreground/[0.06] transition-all duration-500 hover:border-foreground/[0.14]"
+            className="topic-card group relative flex-shrink-0 flex items-stretch overflow-hidden rounded-[0.5rem] border border-gold/10 transition-all duration-500 hover:border-gold/25"
           >
             {/* Left accent border */}
-            <div className="w-[3px] flex-shrink-0 bg-foreground/[0.06] group-hover:bg-foreground/30 transition-colors duration-500" />
+            <div className="w-[3px] flex-shrink-0 bg-gold/10 group-hover:bg-gold/40 transition-colors duration-500" />
 
             <div className="flex items-center gap-3 sm:gap-4 py-2.5 sm:py-3 pl-3 sm:pl-4 pr-5 sm:pr-6">
               {/* Course code */}
@@ -110,7 +111,7 @@ export function SummariesCTA() {
       <div className="mx-auto max-w-6xl px-6">
         <div
           ref={section.ref}
-          className="relative rounded-2xl border border-foreground/[0.08] overflow-hidden"
+          className="relative rounded-2xl border border-gold/15 overflow-hidden"
         >
           {/* Background */}
           <div className="absolute inset-0 bg-foreground/[0.015]" />
@@ -124,10 +125,10 @@ export function SummariesCTA() {
           />
 
           {/* Corner accents */}
-          <div className="absolute top-0 left-0 w-16 h-px bg-foreground/[0.12]" />
-          <div className="absolute top-0 left-0 w-px h-16 bg-foreground/[0.12]" />
-          <div className="absolute bottom-0 right-0 w-16 h-px bg-foreground/[0.12]" />
-          <div className="absolute bottom-0 right-0 w-px h-16 bg-foreground/[0.12]" />
+          <div className="absolute top-0 left-0 w-16 h-px bg-gold/20" />
+          <div className="absolute top-0 left-0 w-px h-16 bg-gold/20" />
+          <div className="absolute bottom-0 right-0 w-16 h-px bg-gold/20" />
+          <div className="absolute bottom-0 right-0 w-px h-16 bg-gold/20" />
 
           {/* Top content — centered text + buttons */}
           <div
@@ -142,11 +143,11 @@ export function SummariesCTA() {
                     : "opacity-0 translate-y-4"
                 }`}
               >
-                <div className="h-px w-8 bg-foreground/20" />
-                <span className="text-[0.65rem] sm:text-[0.7rem] font-medium uppercase tracking-[0.25em] text-foreground/40">
+                <div className="h-px w-8 bg-gold/30" />
+                <span className="text-[0.65rem] sm:text-[0.7rem] font-medium uppercase tracking-[0.25em] text-gold/60">
                   Free Resource
                 </span>
-                <div className="h-px w-8 bg-foreground/20" />
+                <div className="h-px w-8 bg-gold/30" />
               </div>
 
               <h2
@@ -158,7 +159,7 @@ export function SummariesCTA() {
                 style={{ transitionDelay: "100ms" }}
               >
                 Lebanese University{" "}
-                <span className="text-foreground/50">Summaries</span>
+                <span className="text-gold/50">Summaries</span>
               </h2>
 
               <p
@@ -186,7 +187,7 @@ export function SummariesCTA() {
               >
                 <a
                   href="#"
-                  className="group relative inline-flex h-12 w-full sm:w-auto items-center justify-center gap-3 overflow-hidden rounded-full bg-foreground px-8 text-background text-[0.8rem] font-medium uppercase tracking-[0.15em] transition-all hover:shadow-lg hover:shadow-foreground/10"
+                  className="group relative inline-flex h-12 w-full sm:w-auto items-center justify-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-gold-dark via-gold to-gold-dark px-8 text-background text-[0.8rem] font-medium uppercase tracking-[0.15em] transition-all hover:shadow-lg hover:shadow-gold/20"
                 >
                   <span className="relative z-10">Browse Summaries</span>
                   <svg
@@ -202,7 +203,7 @@ export function SummariesCTA() {
                       d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
                     />
                   </svg>
-                  <span className="absolute inset-0 bg-foreground/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                  <span className="absolute inset-0 bg-gold-dark/90 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                 </a>
 
               </div>

@@ -8,12 +8,15 @@ import { SummariesCTA } from "@/components/summaries-cta";
 export default function Home() {
   return (
     <main>
-      <HeroSection />
-      <AboutSection />
+      <div>
+        <HeroSection />
+        <AboutSection />
+      </div>
+
       <ExperienceSection />
       <ProjectsSection />
       <ContactSection />
-      <SummariesCTA />
+      {/* <SummariesCTA /> */}
     </main>
   );
 }

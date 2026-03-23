@@ -60,34 +60,33 @@ export function AboutSection() {
   const [philosophyRef, philosophyVisible] = useScrollReveal(0.1);
 
   return (
-    <section id="about" className="relative pt-16 sm:pt-24 pb-16 sm:pb-24 px-6 overflow-hidden">
-      <div className="mx-auto max-w-6xl">
+    <section id="about" className="relative pt-16 sm:pt-24 pb-48 sm:pb-64 px-6 overflow-hidden">
+
+      <div className="relative mx-auto max-w-6xl">
         {/* Section label + heading */}
         <div ref={headingRef} className="mb-20 sm:mb-28">
           <div
-            className={`flex items-center gap-3 mb-6 transition-all duration-700 ease-out ${
-              headingVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-4"
-            }`}
+            className={`flex items-center gap-3 mb-6 transition-all duration-700 ease-out ${headingVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-4"
+              }`}
           >
-            <div className="h-px w-8 bg-foreground/20" />
-            <span className="text-[0.65rem] sm:text-[0.7rem] font-medium uppercase tracking-[0.25em] text-foreground/40">
+            <div className="h-px w-8 bg-gold/30" />
+            <span className="text-[0.65rem] sm:text-[0.7rem] font-medium uppercase tracking-[0.25em] text-gold/60">
               About
             </span>
           </div>
 
           <h2
-            className={`font-serif italic text-[clamp(1.9rem,5vw,3.8rem)] leading-[1.2] tracking-tighter text-foreground max-w-3xl transition-all duration-700 ease-out ${
-              headingVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
+            className={`font-serif italic text-[clamp(1.9rem,5vw,3.8rem)] leading-[1.2] tracking-tighter text-foreground max-w-3xl transition-all duration-700 ease-out ${headingVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-8"
+              }`}
             style={{ transitionDelay: "150ms" }}
           >
             Building at the intersection of{" "}
-            <span className="text-foreground/50">code</span> &{" "}
-            <span className="text-foreground/50">craft</span>
+            <span className="text-gold/60">code</span> &{" "}
+            <span className="text-gold/60">craft</span>
           </h2>
         </div>
 
@@ -99,11 +98,10 @@ export function AboutSection() {
           {/* Left column — large intro text */}
           <div className="lg:col-span-5">
             <p
-              className={`text-[1.1rem] sm:text-[1.25rem] leading-[1.7] text-foreground/70 transition-all duration-700 ease-out ${
-                introVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
-              }`}
+              className={`text-[1.1rem] sm:text-[1.25rem] leading-[1.7] text-foreground/70 transition-all duration-700 ease-out ${introVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
+                }`}
             >
               I&apos;m Jad — a full-stack developer based in crafting
               digital products that balance technical rigor with visual
@@ -114,11 +112,10 @@ export function AboutSection() {
           {/* Right column — detailed text */}
           <div className="lg:col-span-6 lg:col-start-7 space-y-6">
             <p
-              className={`text-[0.95rem] leading-[1.8] text-foreground/45 transition-all duration-700 ease-out ${
-                introVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
-              }`}
+              className={`text-[0.95rem] leading-[1.8] text-foreground/45 transition-all duration-700 ease-out ${introVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
+                }`}
               style={{ transitionDelay: "120ms" }}
             >
               With a background spanning front-end interfaces to back-end
@@ -128,11 +125,10 @@ export function AboutSection() {
               elevate an experience from functional to memorable.
             </p>
             <p
-              className={`text-[0.95rem] leading-[1.8] text-foreground/45 transition-all duration-700 ease-out ${
-                introVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-6"
-              }`}
+              className={`text-[0.95rem] leading-[1.8] text-foreground/45 transition-all duration-700 ease-out ${introVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
+                }`}
               style={{ transitionDelay: "240ms" }}
             >
               When I&apos;m not writing code, you&apos;ll find me exploring
@@ -145,19 +141,17 @@ export function AboutSection() {
         {/* Stats row */}
         <div ref={statsRef} className="mb-24 sm:mb-32">
           <div
-            className={`h-px w-full bg-foreground/8 mb-10 transition-all duration-1000 ease-out origin-left ${
-              statsVisible ? "scale-x-100" : "scale-x-0"
-            }`}
+            className={`h-px w-full bg-gold/15 mb-10 transition-all duration-1000 ease-out origin-left ${statsVisible ? "scale-x-100" : "scale-x-0"
+              }`}
           />
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8">
             {stats.map((stat, i) => (
               <div
                 key={stat.label}
-                className={`text-center sm:text-left transition-all duration-700 ease-out ${
-                  statsVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-6"
-                }`}
+                className={`text-center sm:text-left transition-all duration-700 ease-out ${statsVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-6"
+                  }`}
                 style={{ transitionDelay: `${200 + i * 120}ms` }}
               >
                 <span className="block font-serif italic text-[clamp(2.1rem,4.5vw,3rem)] leading-[1.1] tracking-tighter text-foreground">
@@ -170,9 +164,8 @@ export function AboutSection() {
             ))}
           </div>
           <div
-            className={`h-px w-full bg-foreground/8 mt-10 transition-all duration-1000 ease-out origin-right ${
-              statsVisible ? "scale-x-100" : "scale-x-0"
-            }`}
+            className={`h-px w-full bg-gold/15 mt-10 transition-all duration-1000 ease-out origin-right ${statsVisible ? "scale-x-100" : "scale-x-0"
+              }`}
             style={{ transitionDelay: "300ms" }}
           />
         </div>
@@ -180,14 +173,13 @@ export function AboutSection() {
         {/* Philosophy / approach */}
         <div ref={philosophyRef}>
           <div
-            className={`flex items-center gap-3 mb-14 transition-all duration-700 ease-out ${
-              philosophyVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-4"
-            }`}
+            className={`flex items-center gap-3 mb-14 transition-all duration-700 ease-out ${philosophyVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-4"
+              }`}
           >
-            <div className="h-px w-8 bg-foreground/20" />
-            <span className="text-[0.65rem] sm:text-[0.7rem] font-medium uppercase tracking-[0.25em] text-foreground/40">
+            <div className="h-px w-8 bg-gold/30" />
+            <span className="text-[0.65rem] sm:text-[0.7rem] font-medium uppercase tracking-[0.25em] text-gold/60">
               Approach
             </span>
           </div>
@@ -196,14 +188,13 @@ export function AboutSection() {
             {philosophyItems.map((item, i) => (
               <div
                 key={item.number}
-                className={`group transition-all duration-700 ease-out ${
-                  philosophyVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
+                className={`group transition-all duration-700 ease-out ${philosophyVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+                  }`}
                 style={{ transitionDelay: `${150 + i * 130}ms` }}
               >
-                <span className="block text-[0.7rem] font-mono text-foreground/20 mb-4">
+                <span className="block text-[0.7rem] font-mono text-gold/35 mb-4">
                   {item.number}
                 </span>
                 <h3 className="font-serif italic text-[1.2rem] sm:text-[1.35rem] tracking-tighter text-foreground mb-4 leading-[1.2]">
@@ -216,34 +207,6 @@ export function AboutSection() {
             ))}
           </div>
         </div>
-
-        {/* Closing statement — commented out for now */}
-        {/* <div ref={closing.ref} className="mt-28 sm:mt-36 max-w-2xl mx-auto text-center">
-          <p
-            className={`font-serif italic text-[clamp(1.2rem,3vw,1.75rem)] leading-[1.45] tracking-tighter text-foreground/70 transition-all duration-700 ease-out ${
-              closing.visible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-6"
-            }`}
-          >
-            &ldquo;I don&apos;t just build software — I craft experiences
-            that respect the user&apos;s time, attention, and intelligence.&rdquo;
-          </p>
-          <div
-            className={`mt-6 flex justify-center items-center gap-3 transition-all duration-700 ease-out ${
-              closing.visible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-4"
-            }`}
-            style={{ transitionDelay: "200ms" }}
-          >
-            <div className="h-px w-5 bg-foreground/20" />
-            <span className="text-[0.65rem] font-medium uppercase tracking-[0.25em] text-foreground/30">
-              Jad Chahine
-            </span>
-            <div className="h-px w-5 bg-foreground/20" />
-          </div>
-        </div> */}
       </div>
     </section>
   );

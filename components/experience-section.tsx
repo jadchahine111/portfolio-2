@@ -86,7 +86,7 @@ function ExperienceContent({
         {experience.technologies.map((tech) => (
           <span
             key={tech}
-            className="text-[0.65rem] font-medium uppercase tracking-widest text-foreground/30 border border-foreground/8 rounded-full px-3 py-1"
+            className="text-[0.65rem] font-medium uppercase tracking-widest text-gold/40 border border-gold/15 rounded-full px-3 py-1"
           >
             {tech}
           </span>
@@ -138,13 +138,13 @@ function TimelineEntry({
           }`}
           style={{ transitionDelay: `${100 + index * 80}ms` }}
         >
-          <div className="h-[9px] w-[9px] rounded-full border-[1.5px] border-foreground/25 bg-background" />
+          <div className="h-[9px] w-[9px] rounded-full border-[1.5px] border-gold/40 bg-background" />
         </div>
         {!isLast && (
           <div
             className={`w-px flex-1 origin-top transition-all duration-1000 ease-out ${
               entryVisible
-                ? "scale-y-100 bg-foreground/8"
+                ? "scale-y-100 bg-gold/15"
                 : "scale-y-0 bg-transparent"
             }`}
             style={{ transitionDelay: `${200 + index * 80}ms` }}
@@ -194,7 +194,7 @@ export function ExperienceSection() {
   const [headingRef, headingVisible] = useScrollReveal(0.2);
 
   return (
-    <section id="experience" className="relative pt-16 sm:pt-24 pb-16 sm:pb-20 px-6">
+    <section id="experience" className="relative pt-48 sm:pt-64 pb-16 sm:pb-20 px-6">
       <div className="mx-auto max-w-5xl">
         {/* Section label + heading — centered */}
         <div ref={headingRef} className="mb-20 sm:mb-28 text-center">
@@ -205,11 +205,11 @@ export function ExperienceSection() {
                 : "opacity-0 translate-y-4"
             }`}
           >
-            <div className="h-px w-8 bg-foreground/20" />
-            <span className="text-[0.65rem] sm:text-[0.7rem] font-medium uppercase tracking-[0.25em] text-foreground/40">
+            <div className="h-px w-8 bg-gold/30" />
+            <span className="text-[0.65rem] sm:text-[0.7rem] font-medium uppercase tracking-[0.25em] text-gold/60">
               Experience
             </span>
-            <div className="h-px w-8 bg-foreground/20" />
+            <div className="h-px w-8 bg-gold/30" />
           </div>
 
           <h2
@@ -221,8 +221,8 @@ export function ExperienceSection() {
             style={{ transitionDelay: "150ms" }}
           >
             Where I&apos;ve been{" "}
-            <span className="text-foreground/50">&</span>{" "}
-            <span className="text-foreground/50">what I&apos;ve built</span>
+            <span className="text-gold/50">&</span>{" "}
+            <span className="text-gold/50">what I&apos;ve built</span>
           </h2>
         </div>
 

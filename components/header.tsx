@@ -87,21 +87,31 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-background/80 backdrop-blur-xl shadow-[0_1px_0_0_rgba(0,0,0,0.06)] dark:shadow-[0_1px_0_0_rgba(255,255,255,0.06)]"
-            : "bg-transparent"
+        className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled ? "top-4" : "top-4 sm:top-2"
         }`}
       >
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
+        <div
+          className={`mx-auto transition-all duration-500 px-4 sm:px-6 ${
+            scrolled
+              ? "max-w-4xl"
+              : "max-w-6xl"
+          }`}
+        >
+          <div
+            className={`flex h-14 items-center justify-between border transition-all duration-500 px-6 ${
+              scrolled
+                ? "rounded-full border-foreground/10 backdrop-blur-xl shadow-lg shadow-black/5 dark:shadow-black/20"
+                : "rounded-full border-foreground/10 backdrop-blur-xl shadow-lg shadow-black/5 dark:shadow-black/20 sm:rounded-none sm:border-transparent sm:backdrop-blur-none sm:shadow-none"
+            }`}
+          >
             {/* Logo / Name */}
             <Link
               href="/"
               className="group relative flex items-baseline gap-1.5"
               onClick={() => setMobileOpen(false)}
             >
-              <span className="font-serif italic text-[1.2rem] tracking-tighter text-foreground transition-opacity group-hover:opacity-70">
+              <span className="font-serif italic text-[1.2rem] tracking-tighter text-gold-gradient transition-opacity group-hover:opacity-70">
                 Jad
               </span>
               <span className="text-[0.8rem] font-medium uppercase tracking-[0.2em] text-foreground/70 transition-opacity group-hover:opacity-70">
@@ -123,7 +133,7 @@ export function Header() {
                   >
                     {item.label}
                     <span
-                      className={`absolute bottom-1 left-4 right-4 h-px bg-foreground transition-transform origin-left duration-300 ${
+                      className={`absolute bottom-1 left-4 right-4 h-px bg-gold transition-transform origin-left duration-300 ${
                         isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                       }`}
                     />
@@ -288,8 +298,7 @@ export function Header() {
         </div>
       )}
 
-      {/* Spacer to prevent content from going under fixed header */}
-      <div className="h-16" />
+      {/* No spacer — header overlays the hero */}
     </>
   );
 }
